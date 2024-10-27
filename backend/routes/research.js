@@ -1,8 +1,7 @@
-// routes/research.js
 const express = require('express');
 const router = express.Router();
 const Research = require('../models/Research');
-const { verifyToken, isResearcher } = require('../middlewares/authJwt');
+const { verifyToken, isResearcher } = require('../middleware/authJwt'); // Corrected path
 
 router.post('/', [verifyToken, isResearcher], async (req, res) => {
   const research = new Research(req.body);
