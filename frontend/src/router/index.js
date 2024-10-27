@@ -1,26 +1,18 @@
-import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+// src/router/index.js
+import Vue from 'vue';
+import Router from 'vue-router';
+import HomePage from '@/components/HomePage.vue';
+import UserDashboard from '@/components/UserDashboard.vue';
+import ResearchSubmissionForm from '@/components/ResearchSubmissionForm.vue';
+import ResearchDetailPage from '@/components/ResearchDetailPage.vue';
 
-const routes = [
-  {
-    path: "/",
-    name: "home",
-    component: HomeView,
-  },
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  },
-];
+Vue.use(Router);
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
+export default new Router({
+  routes: [
+    { path: '/', component: HomePage },
+    { path: '/dashboard', component: UserDashboard },
+    { path: '/submit', component: ResearchSubmissionForm },
+    { path: '/research/:id', component: ResearchDetailPage },
+  ],
 });
-
-export default router;
