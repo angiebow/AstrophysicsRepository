@@ -7,16 +7,16 @@
       </h2>
       <form @submit.prevent="handleLogin" class="space-y-4">
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-600"
-            >Email</label
+          <label for="username" class="block text-sm font-medium text-gray-600"
+            >Username</label
           >
           <input
-            v-model="email"
-            type="email"
-            id="email"
+            v-model="username"
+            type="text"
+            id="username"
             required
             class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Masukkan email..."
+            placeholder="Masukkan username..."
           />
         </div>
 
@@ -60,7 +60,7 @@ export default {
   components: { Navbar },
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
     };
   },
@@ -68,11 +68,11 @@ export default {
     async handleLogin() {
       try {
         const response = await AuthService.login({
-          email: this.email,
+          username: this.username,
           password: this.password,
         });
         console.log(response.data);
-        this.$router.push("/login");
+        this.$router.push("/");
       } catch (error) {
         console.error(error);
       }

@@ -7,6 +7,7 @@
         Home - Featured Research
       </h1>
       <h1>{{ message }}</h1>
+      <h1>Logged User: {{ loggedIn }}</h1>
 
       <!-- Latest Research Section -->
       <section class="mb-12">
@@ -50,6 +51,7 @@ export default {
       latestResearch: [], // Data dari API untuk riset terbaru
       topRatedResearch: [], // Data dari API untuk riset rating tertinggi
       message: "",
+      loggedIn: localStorage.getItem("username"),
     };
   },
   async created() {
