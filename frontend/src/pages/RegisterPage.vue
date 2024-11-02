@@ -68,7 +68,8 @@
 
 <script>
 import Navbar from "@/components/MainNavbar.vue";
-import axios from "axios";
+import AuthService from "../services/auth.js";
+//import axios from "axios";
 
 export default {
   components: { Navbar },
@@ -82,7 +83,7 @@ export default {
   methods: {
     async handleRegister() {
       try {
-        const response = await axios.post("/api/register", {
+        const response = await AuthService.register({
           username: this.username,
           email: this.email,
           password: this.password,

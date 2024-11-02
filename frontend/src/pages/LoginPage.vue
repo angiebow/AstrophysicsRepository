@@ -54,8 +54,29 @@
 
 <script>
 import Navbar from "@/components/MainNavbar.vue";
+import AuthService from "../services/auth.js";
 
 export default {
   components: { Navbar },
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    async handleLogin() {
+      try {
+        const response = await AuthService.login({
+          email: this.email,
+          password: this.password,
+        });
+        console.log(response.data);
+        this.$router.push("/login");
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
 };
 </script>

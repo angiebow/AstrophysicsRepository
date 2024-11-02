@@ -6,6 +6,11 @@ const researchRoutes = require('./routes/research');
 const { verifyToken } = require('./middleware/authJwt'); // Corrected path
 
 const app = express();
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'http://localhost:8080',
+}));
 
 // Middleware
 app.use(bodyParser.json());

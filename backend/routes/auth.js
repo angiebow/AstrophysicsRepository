@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 
-router.post('/signup', async (req, res) => {
+router.post('/register', async (req, res) => {
   const hashedPassword = bcrypt.hashSync(req.body.password, 8);
   const user = new User({
     username: req.body.username,
@@ -17,7 +17,7 @@ router.post('/signup', async (req, res) => {
   res.status(201).send({ message: 'User registered successfully!' });
 });
 
-router.post('/signin', async (req, res) => {
+router.post('/login', async (req, res) => {
   const user = await User.findOne({ username: req.body.username });
   if (!user) return res.status(404).send({ message: 'User not found.' });
 
