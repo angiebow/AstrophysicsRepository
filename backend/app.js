@@ -19,6 +19,11 @@ mongoose.connect('mongodb://localhost:27017/astrophysics')
 app.use('/api/auth', authRoutes);
 app.use('/api/research', verifyToken, researchRoutes);
 
+// Sample API endpoint
+app.get('/api/hello', (req, res) => {
+  res.json({ message: 'Hello from Express!' });
+});
+
 // Error Handling Middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);

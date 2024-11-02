@@ -6,6 +6,7 @@
       <h1 class="mb-6 text-3xl font-semibold text-center text-gray-800">
         Home - Featured Research
       </h1>
+      <h1>{{ message }}</h1>
 
       <!-- Latest Research Section -->
       <section class="mb-12">
@@ -48,7 +49,17 @@ export default {
     return {
       latestResearch: [], // Data dari API untuk riset terbaru
       topRatedResearch: [], // Data dari API untuk riset rating tertinggi
+      message: "",
     };
+  },
+  async created() {
+    try {
+      const response = await fetch("/api/hello");
+      const data = await response.json();
+      this.message = data.message;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   },
 };
 </script>
