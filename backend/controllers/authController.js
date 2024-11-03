@@ -40,4 +40,15 @@ exports.loginUser = async (req, res) => {
 
 exports.getUser = async (req, res) => {
   // Get user logic
+  const userId = req.params.id;
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      res.status(404).send({ message: 'User not found' });
+    } else {
+      res.send(user);
+    }
+  } catch (err) {
+    res.status(500).send({ message: 'Error fetching user' });
+  }
 };

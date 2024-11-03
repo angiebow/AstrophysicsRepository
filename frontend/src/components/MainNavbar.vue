@@ -40,6 +40,7 @@
         Submit Research
       </router-link>
       <router-link
+        v-if="!loggedIn"
         to="/login"
         class="font-semibold text-gray-200 transition hover:text-green-400"
         active-class="text-green-400 border-b-2 border-green-400"
@@ -48,6 +49,7 @@
         Login
       </router-link>
       <router-link
+        v-if="!loggedIn"
         to="/register"
         class="font-semibold text-gray-200 transition hover:text-green-400"
         active-class="text-green-400 border-b-2 border-green-400"
